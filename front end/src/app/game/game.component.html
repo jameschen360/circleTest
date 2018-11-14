@@ -1,0 +1,75 @@
+<section class="content">
+  <section class="container">
+    <div class="page-header">
+      <h1>Local Play</h1>
+    </div>
+    <div class="row center-game-box" *ngIf="!hasWon">
+      <div class="grid">
+        <div class="rows">
+          <div class="cell" id="0_{{i}}" *ngFor="let row of ticTacSquareArray[0]; let i = index" (click)="putMarker($event)">
+            <span *ngIf="row==0; else input"></span>
+            <ng-template #input>
+              <span *ngIf="row==2; else inputX">
+                O
+              </span>
+              <ng-template #inputX>
+                X
+              </ng-template>
+            </ng-template>
+          </div>
+        </div>
+        <div class="rows">
+          <div class="cell" id="1_{{i}}" *ngFor="let row of ticTacSquareArray[1]; let i = index" (click)="putMarker($event)">
+            <span *ngIf="row==0; else input"></span>
+            <ng-template #input>
+              <span *ngIf="row==2; else inputX">
+                O
+              </span>
+              <ng-template #inputX>
+                X
+              </ng-template>
+            </ng-template>
+          </div>
+        </div>
+        <div class="rows">
+          <div class="cell" id="2_{{i}}" *ngFor="let row of ticTacSquareArray[2]; let i = index" (click)="putMarker($event)">
+            <span *ngIf="row==0; else input"></span>
+            <ng-template #input>
+              <span *ngIf="row==2; else inputX">
+                O
+              </span>
+              <ng-template #inputX>
+                X
+              </ng-template>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- <div class="alert" role="alert">
+        Player {{userData.data.first_name}}'s Turn
+      </div> -->
+      <div class="alert" role="alert" *ngIf="currentUserTurn % 2 == 0; else SECONDUSER">
+        User 1's Turn
+      </div>
+      <ng-template #SECONDUSER>
+        <div class="alert" role="alert">
+          User 2's Turn
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="row" *ngIf="hasWon">
+      <div class="alert alert-success" role="alert">
+        The Winner is Player {{userData.data.first_name}}
+      </div>
+    </div>
+    <div class="row">
+      <p>
+        <a class="btn btn-success btn-lg" (click)="resetGame()">Reset Game</a>
+      </p>
+    </div>
+  </section>
+</section>

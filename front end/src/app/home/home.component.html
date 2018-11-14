@@ -1,0 +1,87 @@
+<section class="content">
+  <section class="container">
+    <section>
+      <div class="jumbotron">
+        <div class="row">
+          <div class="img-responsive mx-auto">
+            <img alt="Circle Cardiovascular Imaging" class="img-responsive text-center" src="../../assets/img/brand/logo.png" />
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <p class="mx-auto">
+            <a class="btn btn-success btn-lg" (click)="navigateLocalGame()">Play Local Game</a>
+            &nbsp;
+            &nbsp;
+            <a class="btn btn-success btn-lg" *ngIf="isLoggedIn" (click)="navigateOnlineGame()">Create Online Game</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2><strong>L</strong>eaderboard</h2>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Games Played</th>
+                    <th scope="col">Wins</th>
+                    <th scope="col">Losses</th>
+                    <th scope="col">Draws</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="../../assets/img/profile/default.png" alt="Profile Picture" class="pull-left chat-profile-image" width="10%"/></td>
+                    <td><span>LOREM</span></td>
+                    <td><span>6</span></td>
+                    <td><span>3</span></td>
+                    <td><span>2</span></td>
+                    <td><span>1</span></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col" *ngIf="isLoggedIn">
+          <h2><strong>O</strong>pen games</h2>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">WebSocket ID</th>
+                    <th scope="col">Created</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let games of openGames">
+                    <td><span>{{ games.socketID }}</span></td>
+                    <td><span>{{ games.created_date }}</span></td>
+                    <td><a class="btn btn-success" >Join</a></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <h2><strong>G</strong>ames in progress</h2>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Lobby Name</th>
+                    <th scope="col">Created</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span>IPSUM</span></td>
+                    <td><span>5 mins</span> ago</td>
+                    <td><a class="btn btn-success" href="">Spectate</a></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
